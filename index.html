@@ -49,7 +49,7 @@
       100% { transform: scale(1); }
     }
     .jump {
-      animation: bounce 5.0s ease;
+      animation: bounce 0.4s ease;
     }
     .winner {
       color: red !important;
@@ -114,7 +114,7 @@
 
         // 跳動動畫
         element.classList.add("jump");
-        setTimeout(() => element.classList.remove("jump"), 400);
+        setTimeout(() => element.classList.remove("jump"), 200);
 
         if (count >= target) {
           clearInterval(interval);
@@ -142,6 +142,7 @@
   </script>
 </body>
 </html>
+
 
 
 
