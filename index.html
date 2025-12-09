@@ -111,15 +111,20 @@
       }, 1200); // 每 100 毫秒增加一次
     }
       function highlightWinner() {
-      // 找出最高票數
-      const maxVotes = Math.max(...Object.values(finalVotes));
-      // 對應每個候選人，若票數等於最高票，改成紅色
-      for (const key in finalVotes) {
-        if (finalVotes[key] === maxVotes) {
-          document.getElementById("votes" + key).classList.add("winner");
-        }
-      }
+  // 找出最高票數
+  const maxVotes = Math.max(...Object.values(finalVotes));
+  console.log("最高票數:", maxVotes);
+
+  // 對應每個候選人，若票數等於最高票，改成紅色
+  for (const key in finalVotes) {
+    if (finalVotes[key] === maxVotes) {
+      const el = document.getElementById("votes" + key);
+      console.log("最高票者:", key, el);
+      el.classList.add("winner");
     }
+  }
+}
+    
     animateVotes("votesA", finalVotes.A);
     animateVotes("votesB", finalVotes.B);
     animateVotes("votesC", finalVotes.C);
@@ -127,6 +132,7 @@
   </script>
 </body>
 </html>
+
 
 
 
