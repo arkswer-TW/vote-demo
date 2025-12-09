@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>投票結果</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .candidate {
+      margin: 20px;
+      font-size: 24px;
+    }
+    .name {
+      font-weight: bold;
+    }
+    .votes {
+      color: #0078D7;
+      font-size: 32px;
+      transition: transform 0.2s ease; /* 數字跳動效果 */
+      display: inline-block;
+    }
+    .jump {
+      transform: scale(1.3);
+    }
+  </style>
+</head>
+<body>
+  <h1>候選人投票結果</h1>
+  <div class="candidate">
+    <span class="name">候選人 A：</span>
+    <span class="votes" id="votesA">0</span>
+  </div>
+  <div class="candidate">
+    <span class="name">候選人 B：</span>
+    <span class="votes" id="votesB">0</span>
+  </div>
+  <div class="candidate">
+    <span class="name">候選人 C：</span>
+    <span class="votes" id="votesC">0</span>
+  </div>
+  <div class="candidate">
+    <span class="name">候選人 D：</span>
+    <span class="votes" id="votesD">0</span>
+  </div>
+
+  <!-- 音效檔案，可以用短促的「滴答」或「彈跳」聲 -->
+  <audio id="tickSound" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
+
+  <script>
+    const finalVotes = {
+      A: 356,
+      B: 278,
+      C: 412,
+      D: 198
+    };
+
+    function animateVotes(id, target) {
+      let count = 0;
+      const element = document.getElementById(id);
+      const sound = document.getElementById("tickSound");
+
+      const interval = setInterval(() => {
+        count++;
+        element.textContent = count;
+
+        // 播放音效
+        sound.currentTime = 0; // 重置播放位置
+        sound.play();
+
+        // 加上跳動效果
+        element.classList.add("jump");
+        setTimeout(() => element.classList.remove("jump"), 150);
+
+        if (count >= target) {
+          clearInterval(interval);
+        }
+      }, 30); // 每 30 毫秒增加一次
+    }
+
+    animateVotes("votesA", finalVotes.A);
+    animateVotes("votesB", finalVotes.B);
+    animateVotes("votesC", finalVotes.C);
+    animateVotes("votesD", finalVotes.D);
+  </script>
+</body>
+</html>
