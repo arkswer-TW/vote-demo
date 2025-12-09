@@ -50,7 +50,7 @@
       100% { transform: scale(1); }
     }
     .jump {
-      animation: bounce 0.6s ease;
+      animation: bounce 6.0s ease;
     }
     .winner {
       color: red !important;
@@ -91,7 +91,7 @@
   <audio id="tickSound" src="heartbeat 2.mp3" preload="auto"></audio>
 
   <script>
-    const finalVotes = { A: 15, B: 21, C: 8, D: 28 };
+    const finalVotes = { A: 55, B: 51, C: 68, D: 48 };
     let finishedCount = 0;
 
     function animateVotesRandom(id, target) {
@@ -116,7 +116,7 @@
           element.classList.add("jump");
 
           // 下一次更新延遲隨機 (50~300 毫秒)
-          const delay = Math.floor(Math.random() * 250) + 50;
+          const delay = Math.floor(Math.random() * 600) + 50;
           setTimeout(update, delay);
         } else {
           finishedCount++;
@@ -144,4 +144,5 @@
   </script>
 </body>
 </html>
+
 
