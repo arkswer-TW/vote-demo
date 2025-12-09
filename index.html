@@ -96,8 +96,6 @@
       C: 8,
       D: 28
     };
- };
-    let finishedCount = 0;
 
     function animateVotes(id, target) {
       let count = 0;
@@ -108,32 +106,33 @@
         count++;
         element.textContent = count;
 
-        // 播放音效（需使用者互動後才會生效）
+        // 播放音效
         sound.currentTime = 0;
         sound.play();
 
-        // 跳動動畫
+        // 跳動效果
         element.classList.add("jump");
-        setTimeout(() => element.classList.remove("jump"), 600);
+        setTimeout(() => element.classList.remove("jump"), 500);
 
         if (count >= target) {
           clearInterval(interval);
-          finishedCount++;
-          if (finishedCount === Object.keys(finalVotes).length) {
-            highlightWinner();
-          }
         }
-      }, 30);
+      }, 1200); // 每 100 毫秒增加一次
     }
+      function highlightWinner() {
+  // 找出最高票數
+  const maxVotes = Math.max(...Object.values(finalVotes));
+  console.log("最高票數:", maxVotes);
 
-    function highlightWinner() {
-      const maxVotes = Math.max(...Object.values(finalVotes));
-      for (const key in finalVotes) {
-        if (finalVotes[key] === maxVotes) {
-          document.getElementById("votes" + key).classList.add("winner");
-        }
-      }
+  // 對應每個候選人，若票數等於最高票，改成紅色
+  for (const key in finalVotes) {
+    if (finalVotes[key] === maxVotes) {
+      const el = document.getElementById("votes" + key);
+      console.log("最高票者:", key, el);
+      el.classList.add("winner");
     }
+  }
+}
     
     animateVotes("votesA", finalVotes.A);
     animateVotes("votesB", finalVotes.B);
@@ -142,24 +141,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
