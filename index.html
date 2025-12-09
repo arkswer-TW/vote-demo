@@ -116,8 +116,8 @@
 
           // 跳動動畫
           element.classList.add("jump");
-          setTimeout(() => element.classList.remove("jump"), 500);
-          
+          setTimeout(() => element.classList.remove("jump"), 400);
+
           // 下一次更新延遲隨機 (50~300 毫秒)
           const delay = Math.floor(Math.random() * 250) + 50;
           setTimeout(update, delay);
@@ -139,7 +139,7 @@
           document.getElementById("votes" + key).classList.add("winner");
         }
       }
-        
+    }
     animateVotes("votesA", finalVotes.A);
     animateVotes("votesB", finalVotes.B);
     animateVotes("votesC", finalVotes.C);
@@ -147,6 +147,7 @@
   </script>
 </body>
 </html>
+
 
 
 
