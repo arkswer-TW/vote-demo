@@ -115,10 +115,9 @@
           sound.play();
 
           // 跳動動畫
-          element.classList.remove("jump");
-          void element.offsetWidth; // 強制重繪，重置動畫
           element.classList.add("jump");
-
+          setTimeout(() => element.classList.remove("jump"), 500);
+          
           // 下一次更新延遲隨機 (50~300 毫秒)
           const delay = Math.floor(Math.random() * 250) + 50;
           setTimeout(update, delay);
@@ -148,6 +147,7 @@
   </script>
 </body>
 </html>
+
 
 
 
