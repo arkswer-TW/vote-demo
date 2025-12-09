@@ -19,7 +19,7 @@
     .votes {
       color: #0078D7;
       font-size: 32px;
-      transition: transform 0.8s ease; /* 數字跳動效果 */
+      transition: transform 2.8s ease; /* 數字跳動效果 */
       display: inline-block;
     }
     .jump {
@@ -77,7 +77,7 @@
         if (count >= target) {
           clearInterval(interval);
         }
-      }, 300); // 每 30 毫秒增加一次
+      }, 600); // 每 30 毫秒增加一次
     }
 
     animateVotes("votesA", finalVotes.A);
@@ -87,5 +87,6 @@
   </script>
 </body>
 </html>
+
 
 
