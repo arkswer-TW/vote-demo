@@ -131,11 +131,14 @@
 
     function highlightWinner() {
       const maxVotes = Math.max(...Object.values(finalVotes));
-      for (const key in finalVotes) {
-        if (finalVotes[key] === maxVotes) {
-          document.getElementById("votes" + key).classList.add("winner");
+      // 延遲 1 秒再變色
+      setTimeout(() => {
+        for (const key in finalVotes) {
+          if (finalVotes[key] === maxVotes) {
+            document.getElementById("votes" + key).classList.add("winner");
+          }
         }
-      }
+      }, 1000);
     }
 
     animateVotesRandom("votesA", finalVotes.A);
@@ -145,6 +148,7 @@
   </script>
 </body>
 </html>
+
 
 
 
