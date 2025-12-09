@@ -37,12 +37,17 @@
       border-radius: 8px;
       margin-bottom: 10px;
     }
-    .votes {
-      font-size: 28px;
-      color: #0078D7;
-      transition: transform 5.0s ease;
-      display: inline-block;
-    }
+.votes {
+  font-size: 32px;
+  color: #0078D7;
+  transition: transform 6.0s ease;
+  display: inline-block;
+}
+
+.votes.winner {
+  color: red !important; /* 強制紅色 */
+  font-weight: bold;
+}
     .jump {
       transform: scale(2.0);
     }
@@ -132,6 +137,7 @@
   </script>
 </body>
 </html>
+
 
 
 
