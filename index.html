@@ -37,19 +37,23 @@
       border-radius: 8px;
       margin-bottom: 10px;
     }
-.votes {
-  font-size: 32px;
-  color: #0078D7;
-  transition: transform 6.0s ease;
-  display: inline-block;
-}
-
-.votes.winner {
-  color: red !important; /* 強制紅色 */
-  font-weight: bold;
-}
+    .votes {
+      font-size: 40px;
+      color: #0078D7;
+      display: inline-block;
+    }
+    /* 跳動動畫 */
+    @keyframes bounce {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(2); }
+      100% { transform: scale(1); }
+    }
     .jump {
-      transform: scale(2.0);
+      animation: bounce 5.0s ease;
+    }
+    .winner {
+      color: red !important;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -137,6 +141,7 @@
   </script>
 </body>
 </html>
+
 
 
 
