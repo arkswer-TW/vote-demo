@@ -92,8 +92,35 @@
   <audio id="tickSound" src="heartbeat 2.mp3" preload="auto"></audio>
 
   <script>
-    const finalVotes = { A: 30, B: 25, C: 28, D: 26 };
+    // ⚠️ 請替換成你自己的試算表 ID 和 API Key
+    const sheetId = "17nm9ZakQ4CiL1cQLhQvO1XVuAl8nICaUFVqHqwDQWkg";
+    const apiKey = "AIzaSyDNhANo62pbVoMSLfhac0M5M_UyNuIoVLg";
+
+    // 假設票數分別在 A2、C2、F2、H2
+    const ranges = ["工作表3!C4", "工作表3!F4", "工作表3!I4", "工作表3!L4"];
+
     let finishedCount = 0;
+    let finalVotes = {};
+
+    // 從 Google Sheets 抓取票數
+    fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values:batchGet?ranges=${ranges.join("&ranges=")}&key=${apiKey}`)
+      .then(response => response.json())
+      .then(data => {
+        const votes = data.valueRanges.map(r => r.values[0][0]); 
+        // 轉成數字
+        finalVotes = {
+          A: parseInt(votes[0], 10),
+          B: parseInt(votes[1], 10),
+          C: parseInt(votes[2], 10),
+          D: parseInt(votes[3], 10)
+        };
+
+        // 開始動畫
+        animateVotesRandom("votesA", finalVotes.A);
+        animateVotesRandom("votesB", finalVotes.B);
+        animateVotesRandom("votesC", finalVotes.C);
+        animateVotesRandom("votesD", finalVotes.D);
+      });
 
     function animateVotesRandom(id, target) {
       let count = 0;
@@ -148,6 +175,7 @@
   </script>
 </body>
 </html>
+
 
 
 
